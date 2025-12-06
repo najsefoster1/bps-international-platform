@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Send love. We'll handle the rest.</h1>
-      <p>Upload your photos and we'll make sure they follow the rules.</p>
-      <Link to="/upload" style={{ padding: '1rem 2rem', background: '#007bff', color: '#fff', textDecoration: 'none', borderRadius: '5px' }}>Get Started</Link>
+    <div className="home">
+      <section className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">Send Love Through Photos</h1>
+          <p className="hero-subtitle">Upload your photos and we'll make sure they follow facility rules.</p>
+          <Link to="/upload" className="cta-button">Get Started</Link>
+        </div>
+      </section>
+      <section className="info-section">
+        <h2>How It Works</h2>
+        <p>Buy credits, upload your memories, pick your loved one's facility, and we'll handle the rest.</p>
+      </section>
     </div>
   );
 }
