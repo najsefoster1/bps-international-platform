@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScren from './screens/HomeScreen';
+
+import HomeScreen from './screens/HomeScreen';
 import UploadScreen from './screens/UploadScreen';
 import RecipientScreen from './screens/RecipientScreen';
 import ReviewScreen from './screens/ReviewScreen';
 import CheckoutScreen from './screens/CheckoutScreen';
 import TrackingScreen from './screens/TrackingScreen';
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
