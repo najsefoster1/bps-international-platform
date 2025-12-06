@@ -8,7 +8,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // In-memory storage (for demonstration only)
-const facilities = [];
+// const facilities = [];;
+const facilities = require('./facilities');
 const orders = [];
 const users = [];
 
@@ -39,7 +40,33 @@ app.get('/api/orders/:id', (req, res) => {
   res.json(order);
 });
 
-// Start server
+// 
+const PER_PICTURE_PRICE = 0.5;
+const creditPacks = [
+  { id: 'pack20', credits: 20, price: 10 },
+  { id: 'pack50', credits: 50, price: 20 },
+  { id: 'pack120', credits: 120, price: 45 }
+];
+
+// Create payment intent (dummy)
+app.post('/api/payments/create-intent', (req, res) => {
+  const { paymentOption, creditsNeeded, photosLength } = req.body;
+  let amount = 0;
+  if (paymentOption === 'credits') {
+    const pack = creditPacks.find(p => p.credits >= creditsNeeded) || creditPacks[creditPacks.length - 1];
+    amount = pack.price * 100;
+  } else {
+    amount = photosLength * PER_PICTURE_PRICE * 100;
+  }
+  res.json({ clientSecret: 'test_client_secret', amount });
+});
+
+// Confirm payment (dummy)
+app.post('/api/payments/confirm', (req, res) => {
+  const { userId, paymentIntentId, paymentOption, creditsNeeded } = req.body;
+  res.json({ success: true });
+});
+Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);
