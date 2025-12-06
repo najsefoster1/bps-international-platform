@@ -1,0 +1,12 @@
+{
+  "name": "bps-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "expo": "^48.0.0",
+    "react": "18.x",
+    "react-native": "0.72.x",
+    "@react-navigation/native": "^6.0.0",
+    "@react-navigation/native-stack": "^6.0.0"
+  }
+}
